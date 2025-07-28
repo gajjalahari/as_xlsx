@@ -37,3 +37,7 @@ BEGIN
 END;
 /
 
+
+--step2
+--adding smtp server 
+--https://github.com/ChangemakerStudios/Papercut-SMTP/releases
