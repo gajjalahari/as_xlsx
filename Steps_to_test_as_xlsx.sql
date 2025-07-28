@@ -1,4 +1,7 @@
 
+
+--chatgpt notes
+https://chatgpt.com/c/688713da-9118-800a-9f1d-97d6ae8f59bc
 /*step:1 */
 --connect as sysdba and create and grant below permissions..
 GRANT EXECUTE ON UTL_FILE TO yourschemaname;
