@@ -39,7 +39,20 @@ BEGIN
   );
 END;
 /
-
+  --WORKING AS EXPECTED
+begin
+  as_xlsx.clear_workbook;
+  as_xlsx.new_sheet(p_sheetname=>'emp2',p_show_gridlines=>TRUE,p_show_headers=>TRUE);
+  as_xlsx.query2sheet(
+    p_sql            => 'SELECT empno, ename, job, sal, deptno FROM emp',
+    p_column_headers => TRUE,
+    p_autofilter     => TRUE,
+    p_sheet=> 2,
+    p_table_style    => 'TableStyleMedium2'
+  );
+  as_xlsx.save( 'FILE_DIR', 'EMP REPORT.xlsx' );
+end;
+ /
 
 --step2
 --adding smtp server 
