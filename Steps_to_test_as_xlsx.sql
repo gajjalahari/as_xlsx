@@ -54,6 +54,40 @@ begin
 end;
  /
 
+
+--final
+
+BEGIN
+  -- Clear previous workbook contents
+  as_xlsx.clear_workbook;
+
+  -- Sheet 1: EMP data
+  as_xlsx.new_sheet(p_sheetname => 'emp1', p_show_gridlines => TRUE, p_show_headers => TRUE);
+  as_xlsx.query2sheet(
+    p_sql            => 'SELECT empno, ename, job, sal, deptno FROM emp',
+    p_column_headers => TRUE,
+    p_sheet          => 1,
+    p_autofilter     => TRUE,
+    p_table_style    => 'TableStyleMedium2'
+  );
+
+  -- Sheet 2: DEPT data
+  as_xlsx.new_sheet(p_sheetname => 'dept1', p_show_gridlines => TRUE, p_show_headers => TRUE);
+  as_xlsx.query2sheet(
+    p_sql            => 'SELECT deptno, dname, loc FROM dept',
+    p_column_headers => TRUE,
+    p_sheet          => 2,
+    p_autofilter     => TRUE,
+    p_table_style    => 'TableStyleMedium9'
+  );
+
+  -- Save the file to your directory
+  as_xlsx.save(p_directory => 'FILE_DIR', p_filename => 'emp_dept_export.xlsx');
+END;
+/
+
+
+--
 --step2
 --adding smtp server 
 --https://github.com/ChangemakerStudios/Papercut-SMTP/releases
